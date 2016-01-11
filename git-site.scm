@@ -8,10 +8,13 @@
 ;; for files without extensions.
 (default-mime-type 'text/plain)
 
+(define repo-path (make-parameter #f))
 (match (cla)
   (() (print "usage: <repo> [port]") (exit 0))
-  ((repo port) (server-port (string->number port)))
-  ((repo)))
+  ((repo port)
+   (repo-path repo)
+   (server-port (string->number port)))
+  ((repo) (repo-path repo)))
 
 
 ;; ==================== error handling ====================
@@ -37,8 +40,8 @@
 
 ;; ==================== everything else ====================
 
-;; (cla '("/tmp/g/.git/"))
-(define repo (repository-open (car (cla)) #t))
+;; (repo-path "/tmp/g/.git/")
+(define repo (repository-open (repo-path) #t))
 
 ;; look for branchname r first. then try tags. errors if ref not found
 ;; in tags/branches.
@@ -81,6 +84,12 @@
 (define (handler c)
   ;; (set! R(current-request)) (current-request R)
   (match (uri-path (request-uri (current-request)))
+    ;; this is pretty hacky, but chicken-git doesnt give us `fetch`
+    ;; procedures.
+    (('/ "_fetch")
+     (send-response body: (with-input-from-pipe
+                           (conc "cd " (repo-path) " && git fetch --all")
+                           read-string)))
     (('/ ref pathnames ...)
      (let*-values (((pathname) (string-join pathnames "/"))
                    ((dir file ext) (decompose-pathname pathname)))
