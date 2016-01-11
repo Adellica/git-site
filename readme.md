@@ -1,7 +1,7 @@
 
 # git-site
 
-Server your static website content directly from a git repository on
+Serve your static website content directly from a git repository on
 disk. The repository's contents will be available as regular URL's,
 with the first part of the URL-path being a branch/tag.
 
