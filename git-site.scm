@@ -6,7 +6,7 @@
 ;; spiffy default is application/octet-stream which will trigger
 ;; download dialog in your browser. I think this is oftern annoying
 ;; for files without extensions.
-(default-mime-type 'text/html)
+(default-mime-type 'text/plain)
 
 (match (cla)
   (() (print "usage: <repo> [port]") (exit 0))
