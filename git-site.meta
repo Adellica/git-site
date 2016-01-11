@@ -1,0 +1,4 @@
+;; -*- scheme -*-
+((author "Adellica")
+ (needs git spiffy clojurian matchable
+        uri-common sxml-serializer))

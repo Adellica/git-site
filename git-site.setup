@@ -1,0 +1,4 @@
+;; -*- scheme -*-
+
+(compile -O1 git-site.scm)
+(install-program 'git-site '("git-site"))
