@@ -5,6 +5,9 @@ Serve your static website content directly from a git repository on
 disk. The repository's contents will be available as regular URL's,
 with the first part of the URL-path being a branch/tag.
 
+The files are read directly from the git repository, no working directory
+or temporary files are used.
+
 ## Usage
 
 ```
