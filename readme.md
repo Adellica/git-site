@@ -26,6 +26,21 @@ $ curl localhost:8080/v1.x/index.css
 $ # or point your browser to localhost:8080 and see all versions
 ```
 
+### Production usage example
+
+```
+$ git clone --bare "http://github.com/company/project.git"
+$ git config remote.origin.fetch 'refs/heads/*:refs/heads/*' # important for git fetch to update branch refs
+$ git-site project.git 8080
+$ curl localhost:8080/master/file.txt # get latest version
+$ curl localhost:8080/_fetch # fetch remote
+$ curl localhost:8080/master/file.txt # get latest version again
+```
+
+The special url `_fetch` will issue a `git fetch --all` in project.git
+directory. It can be used as a
+[github webhook](https://developer.github.com/webhooks/), for example.
+
 ## Installation
 
 This is a [CHICKEN]-egg. Install like this:
