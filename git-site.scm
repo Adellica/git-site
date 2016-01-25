@@ -88,7 +88,7 @@
     ;; procedures.
     (('/ "_fetch")
      (send-response body: (with-input-from-pipe
-                           (conc "cd " (repo-path) " && git fetch --all")
+                           (conc "cd " (repo-path) " && git fetch --all --force")
                            read-string)))
     (('/ ref pathnames ...)
      (let*-values (((pathname) (string-join pathnames "/"))
