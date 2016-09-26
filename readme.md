@@ -46,7 +46,7 @@ directory. It can be used as a
 This is a [CHICKEN]-egg. Install like this:
 
 ```
-$ sudo apt-get install chicken-bit # or chicken or something similar
+$ sudo apt-get install chicken-bin # or chicken or something similar
 $ git clone <this-repo> && cd <this-repo>
 $ chicken-install -s
 ```
