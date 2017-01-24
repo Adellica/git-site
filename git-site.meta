@@ -1,4 +1,8 @@
 ;; -*- scheme -*-
 ((author "Adellica")
- (needs git spiffy clojurian matchable
-        uri-common sxml-serializer))
+ (needs (git 0.0.37)
+		(spiffy 5.4.1)
+		(clojurian 0.0.6)
+		(matchable 3.7)
+        (uri-common 1.4)
+		(sxml-serializer 0.4)))
